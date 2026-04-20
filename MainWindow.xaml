@@ -5,8 +5,74 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MnM_UI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MnM-UI" Height="600" Width="600"
+        WindowStyle="None"
+        MouseDown="Window_MouseDown">
 
-    </Grid>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="Set _Master" Click="SetCommand_Click" />
+                <Separator />
+                <MenuItem Header="E_xit" Click="ExitCommand_Click" />
+            </MenuItem>
+        </Menu>
+        
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30*" />
+                <RowDefinition Height="70*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- <Grid.Background>
+                <ImageBrush ImageSource="/images/background.PNG"
+                            TileMode="Tile"
+                            ViewportUnits="Absolute"
+                            Viewport="0,0,100,100"
+                            />
+            </Grid.Background> -->
+
+            <Grid Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" Margin="0,0,5,0" BorderBrush="Black" BorderThickness="1">
+                    <DockPanel Margin="5,0,5,0">
+                        <Label DockPanel.Dock="Top" FontWeight="Bold" FontSize="16">Copy UI</Label>
+                        <Label DockPanel.Dock="Top" Margin="10,0,0,0" FontSize="14">Master Location</Label>
+                        <TextBox DockPanel.Dock="Top" x:Name="txtSourcePath" Margin="5,6,5,6" Padding="5" FontSize="16"></TextBox>
+                        <Button DockPanel.Dock="Bottom" x:Name="btnCopy" Margin="5,7,5,7" Padding="5" FontSize="16" Click="ButtonCopy_Click">Copy</Button>
+                    </DockPanel>
+                </Border>
+
+                <Border Grid.Column="1" Margin="5,0,0,0" BorderBrush="Black" BorderThickness="1">
+                    <DockPanel Margin="5,0,5,0">
+                        <Label DockPanel.Dock="Top" FontWeight="Bold" FontSize="16">Merge Journals</Label>
+                        <Label DockPanel.Dock="Top" Margin="10,0,0,0" FontSize="14">Direction of Merge</Label>
+                        <DockPanel DockPanel.Dock="Top" Margin="5" HorizontalAlignment="Center" LastChildFill="False">
+                            <RadioButton DockPanel.Dock="Left" HorizontalAlignment="Center" Margin="20,8,20,8" FontSize="16" Content="Import" IsChecked="True"></RadioButton>
+                            <RadioButton DockPanel.Dock="Right" Margin="20,8,20,8" FontSize="16" Content="Export"></RadioButton>
+                        </DockPanel>
+                        <Button DockPanel.Dock="Bottom" x:Name="btnMerge" Margin="5,7,5,7" Padding="5" FontSize="16" Click="ButtonMerge_Click">Merge</Button>
+                    </DockPanel>
+                </Border>
+            </Grid>
+
+            <Border Grid.Row="1" Margin="5" BorderBrush="Black" BorderThickness="1">
+                <DockPanel Grid.Row="1" Margin="5" LastChildFill="True">
+                    <Label FontWeight="Bold" FontSize="16" DockPanel.Dock="Top">Program Output</Label>
+                    <ListBox Margin="5" FontSize="16" x:Name="lstOutput" />
+                </DockPanel>
+            </Border>
+
+        </Grid>
+    </DockPanel>
+    
+    
 </Window>
