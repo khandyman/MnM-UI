@@ -11,10 +11,8 @@
 
   <ItemGroup>
     <None Remove="images\background.PNG" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="classes\" />
+    <None Remove="images\border.PNG" />
+    <None Remove="images\button.PNG" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +21,8 @@
 
   <ItemGroup>
     <Resource Include="images\background.PNG" />
+    <Resource Include="images\border.PNG" />
+    <Resource Include="images\button.PNG" />
   </ItemGroup>
 
 </Project>

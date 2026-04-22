@@ -1,36 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Specialized;
-using System.Diagnostics;
-using System.IO;
-using System.Numerics;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 public class ParseJSON
 {
-    //public SaveRoot SourceData { get; set; }
-    //public SaveRoot DestData { get; set; }
-
     public ParseJSON()
     {
-        //SourceData = Deserialize(sourceJson);
-        //DestData = Deserialize(destJson);
     }
 
-    public SaveRoot Deserialize(string sourceJson)
+    public WindowList Deserialize(string sourceJson)
     {
         if (string.IsNullOrEmpty(sourceJson))
         {
-            return new SaveRoot { SaveData = new List<SaveItem>() };
+            return new WindowList { SaveData = new List<WindowItem>() };
         }
         else
         {
-            SaveRoot newData = JsonConvert.DeserializeObject<SaveRoot>(sourceJson);
+            WindowList newData = JsonConvert.DeserializeObject<WindowList>(sourceJson);
 
             return newData;
         }
     }
 
-    public string Serialize(SaveRoot newData)
+    public string Serialize(WindowList newData)
     {
         var settings = new JsonSerializerSettings
         {
@@ -43,7 +33,7 @@ public class ParseJSON
         return newJson;
     }
 
-    public SaveRoot MergeJson(SaveRoot sourceData, SaveRoot destData)
+    public WindowList MergeJson(WindowList sourceData, WindowList destData)
     {
         foreach (var sourceItem in sourceData.SaveData.ToList())
         {
@@ -64,12 +54,12 @@ public class ParseJSON
         return sourceData;
     }
 
-    public class SaveRoot
+    public class WindowList
     {
-        public required List<SaveItem> SaveData { get; set; }
+        public required List<WindowItem> SaveData { get; set; }
     }
 
-    public class SaveItem
+    public class WindowItem
     {
         public required string identifier { get; set; }
         public required VectorData position { get; set; }
