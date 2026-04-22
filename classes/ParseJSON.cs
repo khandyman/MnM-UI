@@ -53,14 +53,11 @@ public class ParseJSON
             }
         }
 
-        if (destData != null)
+        foreach (var destItem in destData.SaveData)
         {
-            foreach (var destItem in destData.SaveData)
+            if (destItem.identifier.Contains("bagpanel") && !destItem.identifier.Contains("6588"))
             {
-                if (destItem.identifier.Contains("bagpanel") && !destItem.identifier.Contains("6588"))
-                {
-                    sourceData.SaveData.Add(destItem);
-                }
+                sourceData.SaveData.Add(destItem);
             }
         }
 

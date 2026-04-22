@@ -11,13 +11,11 @@
 
     <DockPanel>
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="_File">
-                <MenuItem Header="Set _Master" Click="SetCommand_Click" />
-                <Separator />
-                <MenuItem Header="E_xit" Click="ExitCommand_Click" />
-            </MenuItem>
+            <MenuItem FontSize="14" Header="Set _Master" Click="SetCommand_Click"></MenuItem>
+            <Separator HorizontalAlignment="Stretch" />
+            <MenuItem FontSize="14" Header="E_xit" Click="ExitCommand_Click"></MenuItem>
         </Menu>
-        
+
         <Grid Margin="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30*" />
@@ -44,7 +42,7 @@
 
                 <Border Grid.Column="0" Margin="0,0,5,0" BorderBrush="Black" BorderThickness="1">
                     <DockPanel Margin="5,0,5,0">
-                        <Label DockPanel.Dock="Top" FontWeight="Bold" FontSize="16">Copy UI</Label>
+                        <Label DockPanel.Dock="Top" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center">Copy UI</Label>
                         <Label DockPanel.Dock="Top" Margin="10,0,0,0" FontSize="14">Master Location</Label>
                         <TextBox DockPanel.Dock="Top" x:Name="txtSourcePath" Margin="5,6,5,6" Padding="5" FontSize="16"></TextBox>
                         <Button DockPanel.Dock="Bottom" x:Name="btnCopy" Margin="5,7,5,7" Padding="5" FontSize="16" Click="ButtonCopy_Click">Copy</Button>
@@ -53,7 +51,7 @@
 
                 <Border Grid.Column="1" Margin="5,0,0,0" BorderBrush="Black" BorderThickness="1">
                     <DockPanel Margin="5,0,5,0">
-                        <Label DockPanel.Dock="Top" FontWeight="Bold" FontSize="16">Merge Journals</Label>
+                        <Label DockPanel.Dock="Top" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center">Merge Journals</Label>
                         <Label DockPanel.Dock="Top" Margin="10,0,0,0" FontSize="14">Direction of Merge</Label>
                         <DockPanel DockPanel.Dock="Top" Margin="5" HorizontalAlignment="Center" LastChildFill="False">
                             <RadioButton DockPanel.Dock="Left" HorizontalAlignment="Center" Margin="20,8,20,8" FontSize="16" Content="Import" IsChecked="True"></RadioButton>

@@ -78,12 +78,11 @@ namespace MnM_UI
                 string destChatsPath = path + "\\chats.json";
                 string charName = new DirectoryInfo(path).Name;
 
-                //lstOutput.Items.Add($"Merging and copying windows.json to {charName}...");
-                lstOutput.Items.Add($"Dest: |{destWindowsPath}|");
+                lstOutput.Items.Add($"Merging and copying windows.json to {charName}...");
                 copyFiles.CopyWindows(sourceWindowsPath, destWindowsPath);
 
-                //lstOutput.Items.Add($"Copying chats.json to {charName}...");
-                //copyFiles.CopyChats(sourceChatsPath, destChatsPath);
+                lstOutput.Items.Add($"Copying chats.json to {charName}...");
+                copyFiles.CopyChats(sourceChatsPath, destChatsPath);
                
                 lstOutput.Items.Add("--------------------------------------------");
             }
