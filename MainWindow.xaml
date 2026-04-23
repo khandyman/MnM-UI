@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MnM_UI"
         mc:Ignorable="d"
-        Title="MnM-UI" Height="600" Width="600"
+        Title="MnM-UI - Monsters and Memories UI Management Tool" Height="700" Width="700"
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
@@ -16,8 +16,9 @@
     <DockPanel>
         <Grid Margin="10">
             <Grid.RowDefinitions>
+                <RowDefinition Height="10*" />
                 <RowDefinition Height="30*" />
-                <RowDefinition Height="60*" />
+                <RowDefinition Height="50*" />
                 <RowDefinition Height="10*" />
             </Grid.RowDefinitions>
 
@@ -33,16 +34,20 @@
                             Viewport="0,0,100,100"
                             />
             </Grid.Background>
-            
 
-            <Grid Margin="5">
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="24" Foreground="WhiteSmoke" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center">Monsters and Memories UI Management Tool</Label>
+
+            <Grid Margin="5" Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
+                
+
                 <!-- Copy UI -->
-                <Border Grid.Column="0" Margin="0,0,5,0" BorderBrush="WhiteSmoke" BorderThickness="1">
+                <Border Grid.Row="1" Grid.Column="0" Margin="0,0,5,0" BorderBrush="WhiteSmoke" BorderThickness="1">
                     <DockPanel Margin="5,0,5,0">
                         <Label DockPanel.Dock="Top" FontWeight="Bold" FontSize="16" Foreground="WhiteSmoke" HorizontalAlignment="Center">Copy UI</Label>
                         <Label DockPanel.Dock="Top" Margin="10,0,0,0" FontSize="14" Foreground="WhiteSmoke">UI Template Folder</Label>
@@ -54,6 +59,7 @@
                                 </ContextMenu>
                             </TextBox.ContextMenu>
                         </TextBox>
+                        <CheckBox DockPanel.Dock="Top" x:Name="chkCopyCharacter" Margin="5,5,5,5" FontSize="14" Foreground="WhiteSmoke" Click="CopyCharacter_Click">Copy Existing Character?</CheckBox>
                         <Button DockPanel.Dock="Bottom" x:Name="btnCopy" Margin="5,7,5,7" Padding="5" FontSize="20" FontWeight="ExtraBold" Foreground="WhiteSmoke" Click="ButtonCopy_Click">Copy
                             <Button.Background>
                                 <ImageBrush ImageSource="/images/button.PNG"
@@ -67,7 +73,7 @@
                 </Border>
 
                 <!-- Merge Journals -->
-                <Border Grid.Column="1" Margin="5,0,0,0" BorderBrush="WhiteSmoke" BorderThickness="1">
+                <Border Grid.Row="1" Grid.Column="1" Margin="5,0,0,0" BorderBrush="WhiteSmoke" BorderThickness="1">
                     <DockPanel Margin="5,0,5,0">
                         <Label DockPanel.Dock="Top" FontWeight="Bold" FontSize="16" Foreground="WhiteSmoke" HorizontalAlignment="Center">Merge Journals</Label>
                         <Label DockPanel.Dock="Top" Margin="10,0,0,0" FontSize="14" Foreground="WhiteSmoke">Journal Backup Folder</Label>
@@ -79,6 +85,7 @@
                                 </ContextMenu>
                             </TextBox.ContextMenu>
                         </TextBox>
+                        <CheckBox DockPanel.Dock="Top" x:Name="chkNewBackup" Margin="5,5,5,5" FontSize="14" Foreground="WhiteSmoke" Click="NewBackup_Click">Create New Backup?</CheckBox>
                         <Button DockPanel.Dock="Bottom" x:Name="btnMerge" Margin="5,7,5,7" Padding="5" FontSize="20" FontWeight="ExtraBold" Foreground="WhiteSmoke" BorderThickness="1" Click="ButtonMerge_Click">Merge
                             <Button.Background>
                                 <ImageBrush ImageSource="/images/button.PNG"
@@ -93,23 +100,35 @@
             </Grid>
 
             <!-- Program Output -->
-            <Border Grid.Row="1" Margin="5" BorderBrush="WhiteSmoke" BorderThickness="1">
+            <Border Grid.Row="2" Margin="5" BorderBrush="WhiteSmoke" BorderThickness="1">
                 <DockPanel Grid.Row="1" Margin="5" LastChildFill="True">
                     <Label FontWeight="Bold" FontSize="16" Foreground="WhiteSmoke"  DockPanel.Dock="Top">Program Output</Label>
                     <ListBox Background="LightGray" Margin="5" FontSize="16" DockPanel.Dock="Top" x:Name="lstOutput" />
                 </DockPanel>
             </Border>
 
-            <Button Grid.Row="2" Margin="5" Padding="5" FontSize="20" FontWeight="ExtraBold" Foreground="WhiteSmoke" Width="150" HorizontalAlignment="Center" Click="ExitCommand_Click">Exit
-                <Button.Background>
-                    <ImageBrush ImageSource="/images/button.PNG"
-                                TileMode="Tile"
-                                ViewportUnits="Absolute"
-                                Viewport="0,0,100,100"
-                                />
-                </Button.Background>
-            
-            </Button>
+            <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" HorizontalAlignment="Center" Orientation="Horizontal">
+                <Button Margin="5" Padding="5" FontSize="20" FontWeight="ExtraBold" Foreground="WhiteSmoke" Width="150" 
+                        Click="HelpCommand_Click">Help
+                    <Button.Background>
+                        <ImageBrush ImageSource="/images/button.PNG"
+                        TileMode="Tile"
+                        ViewportUnits="Absolute"
+                        Viewport="0,0,100,100"
+                        />
+                    </Button.Background>
+                </Button>
+
+                <Button Margin="5" Padding="5" FontSize="20" FontWeight="ExtraBold" Foreground="WhiteSmoke" Width="150" Click="ExitCommand_Click">Exit
+                    <Button.Background>
+                        <ImageBrush ImageSource="/images/button.PNG"
+                        TileMode="Tile"
+                        ViewportUnits="Absolute"
+                        Viewport="0,0,100,100"
+                        />
+                    </Button.Background>
+                </Button>
+            </StackPanel>
         </Grid>
         
     </DockPanel>

@@ -7,12 +7,18 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>images\MnM.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="images\background.PNG" />
     <None Remove="images\border.PNG" />
     <None Remove="images\button.PNG" />
+    <None Remove="images\MnM.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="images\MnM.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +29,7 @@
     <Resource Include="images\background.PNG" />
     <Resource Include="images\border.PNG" />
     <Resource Include="images\button.PNG" />
+    <Resource Include="images\MnM.ico" />
   </ItemGroup>
 
 </Project>

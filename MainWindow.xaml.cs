@@ -26,7 +26,7 @@ namespace MnM_UI
             if (File.Exists("config"))
             {
                 string[] lines = File.ReadAllLines("config");
-                
+
                 foreach (string line in lines)
                 {
                     if (line.StartsWith("Template: "))
@@ -47,6 +47,13 @@ namespace MnM_UI
             MergeJournals = new();
             CopyFiles = new();
             Validation = new();
+        }
+
+        private void HelpCommand_Click(object sender, RoutedEventArgs e)
+        {
+            HelpWindow helpWindow = new HelpWindow();
+            helpWindow.Owner = this;
+            helpWindow.ShowDialog();
         }
 
         private void ExitCommand_Click(object sender, RoutedEventArgs e)
@@ -93,7 +100,7 @@ namespace MnM_UI
         private void ButtonMerge_Click(object sender, RoutedEventArgs e)
         {
             if (Validation.ValidateJournalChange(txtJournalPath.Text))
-            { 
+            {
                 BuildPaths buildPaths = new(this.TemplateDirectory, this.JournalDirectory);
 
                 List<string> allCharacters = buildPaths.GetCharacters(GameDirectory);
@@ -165,7 +172,7 @@ namespace MnM_UI
             return "";
         }
 
-        private void SaveConfig(string path, string type)
+        public void SaveConfig(string path, string type)
         {
             if (File.Exists("config"))
             {
@@ -189,6 +196,41 @@ namespace MnM_UI
             {
                 File.WriteAllText("config", $"{type}: {path}");
             }
+        }
+
+        private void CopyCharacter_Click(object sender, RoutedEventArgs e)
+        {
+            SelectWindow selectWindow = new SelectWindow(this);
+            selectWindow.Owner = this;
+            selectWindow.ShowDialog();
+        }
+
+        private void NewBackup_Click(object sender, RoutedEventArgs e)
+        {
+            string backupPath;
+            var dialog = new OpenFolderDialog();
+            dialog.Title = "Select a location for your backup directory";
+
+            if (dialog.ShowDialog() == true)
+            {
+                if (System.IO.Path.GetFileName(dialog.FolderName) != "Monsters and Memories")
+                {
+                    backupPath = $@"{dialog.FolderName}\Monsters and Memories";
+                }
+                else
+                {
+                    backupPath = dialog.FolderName;
+                }
+
+                string gamePath = $@"C:\Users\{Environment.UserName}\AppData\LocalLow\Niche Worlds Cult\Monsters and Memories";
+                
+                //Directory.CreateDirectory(backupPath);
+                Microsoft.VisualBasic.FileIO.FileSystem.CopyDirectory(gamePath, backupPath, true);
+                SaveConfig(backupPath, "Journal");
+                txtJournalPath.Text = backupPath; 
+            }
+
+            chkNewBackup.IsChecked = false;
         }
     }
 }

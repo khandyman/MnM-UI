@@ -1,0 +1,46 @@
+﻿<Window x:Class="MnM_UI.SelectWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MnM_UI"
+        mc:Ignorable="d"
+        Title="selectWindow" Height="125" Width="350"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ShowInTaskbar="False"
+        Background="Transparent"
+        BorderBrush="WhiteSmoke"
+        FontFamily="Comprehension-Dark" 
+        MouseDown="Window_MouseDown">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/images/background.PNG"
+            TileMode="Tile"
+            ViewportUnits="Absolute"
+            Viewport="0,0,100,100"
+            />
+        </Grid.Background>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*" />
+            <RowDefinition Height="30*" />
+            <RowDefinition Height="40*" />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" DockPanel.Dock="Top" FontWeight="Bold" FontSize="16" Foreground="WhiteSmoke" 
+               VerticalAlignment="Center" HorizontalAlignment="Center">Select Template Character</Label>
+
+        <ComboBox Grid.Row="1" Margin="5" Padding="5" FontSize="16" Foreground="Black" Background="LightGray" x:Name="cmbCharacters" />
+
+        <Button Grid.Row="2" Margin="5" Padding="5" FontSize="20" FontWeight="ExtraBold" Foreground="WhiteSmoke" Width="150" Click="SelectCommand_Click">Select
+            <Button.Background>
+                <ImageBrush ImageSource="/images/button.PNG"
+                TileMode="Tile"
+                ViewportUnits="Absolute"
+                Viewport="0,0,100,100"
+                />
+            </Button.Background>
+        </Button>
+    </Grid>
+</Window>

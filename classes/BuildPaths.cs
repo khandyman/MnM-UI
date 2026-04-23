@@ -4,10 +4,10 @@ namespace MnM_UI.classes
 {
     public class BuildPaths
     {
-        public string WindowsPath { get; }
-        public string ChatsPath { get; }
+        public string? WindowsPath { get; }
+        public string? ChatsPath { get; }
 
-        public BuildPaths(string templatePath, string journalPath)
+        public BuildPaths(string? templatePath, string? journalPath)
         {
             WindowsPath = templatePath + @"\windows.json";
             ChatsPath = templatePath + @"\chats.json";
