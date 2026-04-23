@@ -1,32 +1,35 @@
 ﻿using System.IO;
 
-public class CopyFiles
-{
-    private ParseJSON ParseJson { get; set; }
-
-    public CopyFiles()
+namespace MnM_UI.classes
+{ 
+    public class CopyFiles
     {
-        ParseJson = new();
-    }
+        private ParseJSON ParseJson { get; set; }
 
-    public void CopyWindows(string sourcePath, string destPath)
-    {
-        string sourceJson = File.ReadAllText(sourcePath);
-        string destJson = "";
-
-        if (File.Exists(destPath))
+        public CopyFiles()
         {
-            destJson = File.ReadAllText(destPath);
+            ParseJson = new();
         }
 
-        ParseJSON.WindowList mergedData = ParseJson.MergeJson(ParseJson.Deserialize(sourceJson), ParseJson.Deserialize(destJson));
-        string newJson = ParseJson.Serialize(mergedData);
-        
-        File.WriteAllText(destPath, newJson);
-    }
+        public void CopyWindows(string sourcePath, string destPath)
+        {
+            string sourceJson = File.ReadAllText(sourcePath);
+            string destJson = "";
 
-    public void CopyChats(string sourcePath, string destPath)
-    {
-        File.Copy(sourcePath, destPath, true);
+            if (File.Exists(destPath))
+            {
+                destJson = File.ReadAllText(destPath);
+            }
+
+            ParseJSON.WindowList mergedData = ParseJson.MergeJson(ParseJson.Deserialize(sourceJson), ParseJson.Deserialize(destJson));
+            string newJson = ParseJson.Serialize(mergedData);
+        
+            File.WriteAllText(destPath, newJson);
+        }
+
+        public void CopyChats(string sourcePath, string destPath)
+        {
+            File.Copy(sourcePath, destPath, true);
+        }
     }
 }

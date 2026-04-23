@@ -46,7 +46,8 @@
                     <DockPanel Margin="5,0,5,0">
                         <Label DockPanel.Dock="Top" FontWeight="Bold" FontSize="16" Foreground="WhiteSmoke" HorizontalAlignment="Center">Copy UI</Label>
                         <Label DockPanel.Dock="Top" Margin="10,0,0,0" FontSize="14" Foreground="WhiteSmoke">UI Template Folder</Label>
-                        <TextBox DockPanel.Dock="Top" x:Name="txtTemplatePath" Margin="5,6,5,6" Padding="5" FontSize="16" Background="LightGray" MouseDoubleClick="ChangeTemplate_Click">
+                        <TextBox DockPanel.Dock="Top" x:Name="txtTemplatePath" x:FieldModifier="public" Margin="5,6,5,6" Padding="5" FontSize="16" Background="LightGray" 
+                                 MouseDoubleClick="ChangeTemplate_Click" ToolTip="Select a &quot;Template&quot; Directory with both windows.json and chats.json inside">
                             <TextBox.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="Change" Click="ChangeTemplate_Click" />
@@ -70,7 +71,8 @@
                     <DockPanel Margin="5,0,5,0">
                         <Label DockPanel.Dock="Top" FontWeight="Bold" FontSize="16" Foreground="WhiteSmoke" HorizontalAlignment="Center">Merge Journals</Label>
                         <Label DockPanel.Dock="Top" Margin="10,0,0,0" FontSize="14" Foreground="WhiteSmoke">Journal Backup Folder</Label>
-                        <TextBox DockPanel.Dock="Top" x:Name="txtJournalPath" Margin="5,6,5,6" Padding="5" FontSize="16" Background="LightGray" MouseDoubleClick="ChangeJournal_Click">
+                        <TextBox DockPanel.Dock="Top" x:Name="txtJournalPath" x:FieldModifier="public" Margin="5,6,5,6" Padding="5" FontSize="16" Background="LightGray" 
+                                 MouseDoubleClick="ChangeJournal_Click" ToolTip="Select a Monsters and Memories directory you want to merge journals to/from">
                             <TextBox.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="Change" Click="ChangeJournal_Click" />

@@ -1,51 +1,54 @@
 ﻿using System.IO;
 using System.Security.Cryptography;
 
-public class MergeJournals
-{
-	public MergeJournals()
-	{
-	}
-
-	public bool CompareFiles(string sourcePath, string destPath)
-	{
-        if (new FileInfo(sourcePath).Length != new FileInfo(destPath).Length)
-        {
-            return false;
-        }
-
-        byte[] sourceHash = MD5.HashData(File.ReadAllBytes(sourcePath));
-        byte[] destHash = MD5.HashData(File.ReadAllBytes(destPath));
-
-        return sourceHash.SequenceEqual(destHash);
-    }
-
-    public void JournalCopy(string sourcePath, string destPath)
+namespace MnM_UI.classes
+{ 
+    public class MergeJournals
     {
-        if (!File.Exists(destPath))
+	    public MergeJournals()
+	    {
+	    }
+
+        public void CopyJournal(string sourcePath, string destPath)
         {
-            File.Copy(sourcePath, destPath, true);
-        }
-        else
-        {
-            if (!CompareFiles(sourcePath, destPath))
+            if (!File.Exists(destPath))
             {
-                string mergedJournal = JournalMerge(sourcePath, destPath);
-                
-                File.WriteAllText(sourcePath, mergedJournal);
-                File.WriteAllText(destPath, mergedJournal);
+                File.Copy(sourcePath, destPath, true);
+            }
+            else
+            {
+                if (!CompareFiles(sourcePath, destPath))
+                {
+                    string mergedJournal = MergeJournal(sourcePath, destPath);
+
+                    File.WriteAllText(sourcePath, mergedJournal);
+                    File.WriteAllText(destPath, mergedJournal);
+                }
             }
         }
-    }
 
-    public string JournalMerge(string sourcePath, string destPath)
-    {
-        string[] sourceLines = File.ReadAllLines(sourcePath);
-        string[] destLines = File.ReadAllLines(destPath);
+        public bool CompareFiles(string sourcePath, string destPath)
+	    {
+            if (new FileInfo(sourcePath).Length != new FileInfo(destPath).Length)
+            {
+                return false;
+            }
 
-        IEnumerable<string> mergedLines = sourceLines.Union(destLines).Where(s => !string.IsNullOrWhiteSpace(s));
-        string mergedJournal = string.Join(Environment.NewLine + Environment.NewLine, mergedLines);
+            byte[] sourceHash = MD5.HashData(File.ReadAllBytes(sourcePath));
+            byte[] destHash = MD5.HashData(File.ReadAllBytes(destPath));
 
-        return mergedJournal;
+            return sourceHash.SequenceEqual(destHash);
+        }
+
+        public string MergeJournal(string sourcePath, string destPath)
+        {
+            string[] sourceLines = File.ReadAllLines(sourcePath);
+            string[] destLines = File.ReadAllLines(destPath);
+
+            IEnumerable<string> mergedLines = sourceLines.Union(destLines).Where(s => !string.IsNullOrWhiteSpace(s));
+            string mergedJournal = string.Join(Environment.NewLine + Environment.NewLine, mergedLines);
+
+            return mergedJournal;
+        }
     }
 }

@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 using Microsoft.Win32;
+using MnM_UI.classes;
 
 namespace MnM_UI
 {
@@ -12,8 +13,11 @@ namespace MnM_UI
     {
         public required string TemplateDirectory { get; set; }
         public required string JournalDirectory { get; set; }
+        public required MergeJournals MergeJournals { get; set; }
+        public required CopyFiles CopyFiles { get; set; }
+        public required Validation Validation { get; set; }
 
-        public const string GameDirectory = @"C:\Users\%USERNAME%\AppData\LocalLow\Niche Worlds Cult\Monsters and Memories";
+        public static readonly string GameDirectory = $@"C:\Users\{Environment.UserName}\AppData\LocalLow\Niche Worlds Cult\Monsters and Memories";
 
         public MainWindow()
         {
@@ -39,6 +43,10 @@ namespace MnM_UI
                     }
                 }
             }
+
+            MergeJournals = new();
+            CopyFiles = new();
+            Validation = new();
         }
 
         private void ExitCommand_Click(object sender, RoutedEventArgs e)
@@ -56,51 +64,98 @@ namespace MnM_UI
 
         private void ButtonCopy_Click(object sender, RoutedEventArgs e)
         {
-            BuildPaths buildPaths = new(this.TemplateDirectory, this.JournalDirectory);
-            CopyFiles copyFiles = new();
-            
-            List<string> allCharacters = buildPaths.AllCharacters;
-            string sourceWindowsPath = buildPaths.WindowsPath;
-            string sourceChatsPath = buildPaths.ChatsPath;
-
-            lstOutput.Items.Clear();
-
-            foreach (string path in allCharacters)
+            if (Validation.ValidateTemplateChange(txtTemplatePath.Text))
             {
-                string destWindowsPath = $@"{GameDirectory}\{path}\windows.json";
-                string destChatsPath = $@"{GameDirectory}\{path}\chats.json";
+                BuildPaths buildPaths = new(this.TemplateDirectory, this.JournalDirectory);
 
-                lstOutput.Items.Add($"Merging and copying windows.json to {path}...");
-                copyFiles.CopyWindows(sourceWindowsPath, destWindowsPath);
+                List<string> allCharacters = buildPaths.GetCharacters(GameDirectory);
+                string sourceWindowsPath = buildPaths.WindowsPath;
+                string sourceChatsPath = buildPaths.ChatsPath;
 
-                lstOutput.Items.Add($"Copying chats.json to {path}...");
-                copyFiles.CopyChats(sourceChatsPath, destChatsPath);
-               
-                lstOutput.Items.Add("--------------------------------------------");
+                lstOutput.Items.Clear();
+
+                foreach (string path in allCharacters)
+                {
+                    string destWindowsPath = $@"{GameDirectory}\{path}\windows.json";
+                    string destChatsPath = $@"{GameDirectory}\{path}\chats.json";
+
+                    lstOutput.Items.Add($"Merging and copying windows.json to {path}...");
+                    CopyFiles.CopyWindows(sourceWindowsPath, destWindowsPath);
+
+                    lstOutput.Items.Add($"Copying chats.json to {path}...");
+                    CopyFiles.CopyChats(sourceChatsPath, destChatsPath);
+
+                    lstOutput.Items.Add("--------------------------------------------");
+                }
             }
         }
 
         private void ButtonMerge_Click(object sender, RoutedEventArgs e)
         {
-            // do stuff
+            if (Validation.ValidateJournalChange(txtJournalPath.Text))
+            { 
+                BuildPaths buildPaths = new(this.TemplateDirectory, this.JournalDirectory);
+
+                List<string> allCharacters = buildPaths.GetCharacters(GameDirectory);
+
+                foreach (string character in allCharacters)
+                {
+                    string sourceJournalPath = $@"{GameDirectory}\{character}\journal";
+                    string destJournalPath = $@"{JournalDirectory}\{character}\journal";
+
+                    if (Directory.Exists(sourceJournalPath))
+                    {
+                        string[] sourceJournals = Directory.GetFiles(sourceJournalPath).ToArray();
+
+                        foreach (string sourceJournal in sourceJournals)
+                        {
+                            string journalFile = Path.GetFileName(sourceJournal);
+                            lstOutput.Items.Add($"Merging {journalFile} for {character}...");
+
+                            string destJournal = $@"{destJournalPath}\{journalFile}";
+                            MergeJournals.CopyJournal(sourceJournal, destJournal);
+                        }
+                    }
+
+                    if (Directory.Exists(destJournalPath))
+                    {
+                        string[] destJournals = Directory.GetFiles(destJournalPath).ToArray();
+
+                        foreach (string destJournal in destJournals)
+                        {
+                            string journalFile = Path.GetFileName(destJournal);
+                            string sourceJournal = $@"{sourceJournalPath}\{journalFile}";
+                            MergeJournals.CopyJournal(destJournal, sourceJournal);
+                        }
+                    }
+                }
+            }
         }
 
         private void ChangeTemplate_Click(object sender, RoutedEventArgs e)
         {
-            txtTemplatePath.Text = GetFolder();
+            txtTemplatePath.Text = GetFolder("template");
             SaveConfig(txtTemplatePath.Text, "Template");
         }
 
         private void ChangeJournal_Click(object sender, RoutedEventArgs e)
         {
-            txtJournalPath.Text = GetFolder();
+            txtJournalPath.Text = GetFolder("journal");
             SaveConfig(txtJournalPath.Text, "Journal");
         }
 
-        private string GetFolder()
+        private string GetFolder(string type)
         {
             var dialog = new OpenFolderDialog();
-            dialog.Title = "Select Your Journal Backup Directory";
+
+            if (type == "template")
+            {
+                dialog.Title = "Select a \"Template\" Directory with both windows.json and chats.json inside";
+            }
+            else if (type == "journal")
+            {
+                dialog.Title = "Select a Monsters and Memories directory you want to merge journals to/from";
+            }
 
             if (dialog.ShowDialog() == true)
             {
