@@ -10,7 +10,7 @@
         AllowsTransparency="True"
         Background="Transparent"
         BorderBrush="WhiteSmoke"
-        FontFamily="Comprehension-Dark" 
+        FontFamily="./fonts/#Crimson Text Regular (TrueType)"
         MouseDown="Window_MouseDown">
 
     <DockPanel>
@@ -50,16 +50,23 @@
                 <Border Grid.Row="1" Grid.Column="0" Margin="0,0,5,0" BorderBrush="WhiteSmoke" BorderThickness="1">
                     <DockPanel Margin="5,0,5,0">
                         <Label DockPanel.Dock="Top" FontWeight="Bold" FontSize="16" Foreground="WhiteSmoke" HorizontalAlignment="Center">Copy UI</Label>
-                        <Label DockPanel.Dock="Top" Margin="10,0,0,0" FontSize="14" Foreground="WhiteSmoke">UI Template Folder</Label>
-                        <TextBox DockPanel.Dock="Top" x:Name="txtTemplatePath" x:FieldModifier="public" Margin="5,6,5,6" Padding="5" FontSize="16" Background="LightGray" 
+                        <Label DockPanel.Dock="Top" Margin="10,0,0,0" FontWeight="Bold" FontSize="14" Foreground="WhiteSmoke">UI Template Folder</Label>
+                        <TextBox DockPanel.Dock="Top" x:Name="txtTemplatePath" x:FieldModifier="public" Margin="5,6,5,6" Padding="5" FontSize="16" FontWeight="Bold"
                                  MouseDoubleClick="ChangeTemplate_Click" ToolTip="Select a &quot;Template&quot; Directory with both windows.json and chats.json inside">
                             <TextBox.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="Change" Click="ChangeTemplate_Click" />
                                 </ContextMenu>
                             </TextBox.ContextMenu>
+                            <TextBox.Background>
+                                <ImageBrush ImageSource="/images/control.png"
+                                TileMode="Tile"
+                                ViewportUnits="Absolute"
+                                Viewport="0,0,100,100"
+                                />
+                            </TextBox.Background>
                         </TextBox>
-                        <CheckBox DockPanel.Dock="Top" x:Name="chkCopyCharacter" Margin="5,5,5,5" FontSize="14" Foreground="WhiteSmoke" Click="CopyCharacter_Click">Copy Existing Character?</CheckBox>
+                        <CheckBox DockPanel.Dock="Top" x:Name="chkCopyCharacter" Margin="5,5,5,5" FontSize="14" FontWeight="Bold" Foreground="WhiteSmoke" Click="CopyCharacter_Click">Copy Existing Character?</CheckBox>
                         <Button DockPanel.Dock="Bottom" x:Name="btnCopy" Margin="5,7,5,7" Padding="5" FontSize="20" FontWeight="ExtraBold" Foreground="WhiteSmoke" Click="ButtonCopy_Click">Copy
                             <Button.Background>
                                 <ImageBrush ImageSource="/images/button.PNG"
@@ -76,16 +83,23 @@
                 <Border Grid.Row="1" Grid.Column="1" Margin="5,0,0,0" BorderBrush="WhiteSmoke" BorderThickness="1">
                     <DockPanel Margin="5,0,5,0">
                         <Label DockPanel.Dock="Top" FontWeight="Bold" FontSize="16" Foreground="WhiteSmoke" HorizontalAlignment="Center">Merge Journals</Label>
-                        <Label DockPanel.Dock="Top" Margin="10,0,0,0" FontSize="14" Foreground="WhiteSmoke">Journal Backup Folder</Label>
-                        <TextBox DockPanel.Dock="Top" x:Name="txtJournalPath" x:FieldModifier="public" Margin="5,6,5,6" Padding="5" FontSize="16" Background="LightGray" 
+                        <Label DockPanel.Dock="Top" Margin="10,0,0,0" FontWeight="Bold" FontSize="14" Foreground="WhiteSmoke">Journal Backup Folder</Label>
+                        <TextBox DockPanel.Dock="Top" x:Name="txtJournalPath" x:FieldModifier="public" Margin="5,6,5,6" Padding="5" FontSize="16" FontWeight="Bold"
                                  MouseDoubleClick="ChangeJournal_Click" ToolTip="Select a Monsters and Memories directory you want to merge journals to/from">
                             <TextBox.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="Change" Click="ChangeJournal_Click" />
                                 </ContextMenu>
                             </TextBox.ContextMenu>
+                            <TextBox.Background>
+                                <ImageBrush ImageSource="/images/control.png"
+                                TileMode="Tile"
+                                ViewportUnits="Absolute"
+                                Viewport="0,0,100,100"
+                                />
+                            </TextBox.Background>
                         </TextBox>
-                        <CheckBox DockPanel.Dock="Top" x:Name="chkNewBackup" Margin="5,5,5,5" FontSize="14" Foreground="WhiteSmoke" Click="NewBackup_Click">Create New Backup?</CheckBox>
+                        <CheckBox DockPanel.Dock="Top" x:Name="chkNewBackup" Margin="5,5,5,5" FontSize="14" FontWeight="Bold" Foreground="WhiteSmoke" Click="NewBackup_Click">Create New Backup?</CheckBox>
                         <Button DockPanel.Dock="Bottom" x:Name="btnMerge" Margin="5,7,5,7" Padding="5" FontSize="20" FontWeight="ExtraBold" Foreground="WhiteSmoke" BorderThickness="1" Click="ButtonMerge_Click">Merge
                             <Button.Background>
                                 <ImageBrush ImageSource="/images/button.PNG"
@@ -103,7 +117,15 @@
             <Border Grid.Row="2" Margin="5" BorderBrush="WhiteSmoke" BorderThickness="1">
                 <DockPanel Grid.Row="1" Margin="5" LastChildFill="True">
                     <Label FontWeight="Bold" FontSize="16" Foreground="WhiteSmoke"  DockPanel.Dock="Top">Program Output</Label>
-                    <ListBox Background="LightGray" Margin="5" FontSize="16" DockPanel.Dock="Top" x:Name="lstOutput" />
+                    <ListBox Margin="5" FontSize="16" FontWeight="Bold" DockPanel.Dock="Top" x:Name="lstOutput">
+                        <ListBox.Background>
+                            <ImageBrush ImageSource="/images/control.png"
+                            TileMode="Tile"
+                            ViewportUnits="Absolute"
+                            Viewport="0,0,100,100"
+                            />
+                        </ListBox.Background>
+                    </ListBox>
                 </DockPanel>
             </Border>
 

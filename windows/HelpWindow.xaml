@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MnM_UI"
         mc:Ignorable="d"
-        Title="HelpWindow" Height="700" Width="600"
+        Title="HelpWindow" Height="700" Width="700"
         WindowStyle="None"
         AllowsTransparency="True"
         ShowInTaskbar="False"
@@ -25,14 +25,14 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="25*" />
-            <RowDefinition Height="25*" />
-            <RowDefinition Height="42*" />
+            <RowDefinition Height="28*" />
+            <RowDefinition Height="35*" />
             <RowDefinition Height="8*" />
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Margin="5">
             <Label Grid.Row="0" DockPanel.Dock="Top" FontWeight="Bold" FontSize="16" Foreground="WhiteSmoke" HorizontalAlignment="Left">Overview</Label>
-            <TextBlock Margin="5" TextWrapping="Wrap" FontSize="14" Foreground="WhiteSmoke">
+            <TextBlock Margin="5" TextWrapping="Wrap" FontSize="14" FontWeight="Bold" Foreground="WhiteSmoke">
                 This tool helps to manage the UI for Monsters and Memories by manipulating the json files that control window placement within the game.
                 <LineBreak />
                 <LineBreak />
@@ -44,7 +44,7 @@
 
         <StackPanel Grid.Row="1" Margin="5">
             <Label Grid.Row="0" DockPanel.Dock="Top" FontWeight="Bold" FontSize="16" Foreground="WhiteSmoke" HorizontalAlignment="Left">Copy UI</Label>
-            <TextBlock Margin="5" TextWrapping="Wrap" FontSize="14" Foreground="WhiteSmoke">
+            <TextBlock Margin="5" TextWrapping="Wrap" FontSize="14" FontWeight="Bold" Foreground="WhiteSmoke">
                 Takes template windows.json (controls all window placement) and chats.json (controls chat tabs and filters) files and copies them to all characters in the MnM game directory. This allows you to set up a template UI and quickly apply it to the game.
                 <LineBreak />
                 <LineBreak />
@@ -54,7 +54,7 @@
 
         <StackPanel Grid.Row="2" Margin="5">
             <Label Grid.Row="0" DockPanel.Dock="Top" FontWeight="Bold" FontSize="16" Foreground="WhiteSmoke" HorizontalAlignment="Left">Merge Journals</Label>
-            <TextBlock Margin="5" TextWrapping="Wrap" FontSize="14" Foreground="WhiteSmoke">
+            <TextBlock Margin="5" TextWrapping="Wrap" FontSize="14" FontWeight="Bold" Foreground="WhiteSmoke">
                 This is primarily for moving between MnM installs on different computers. Because journal entries are saved locally, conversations you have on one machine will not show up on the other.
                 <LineBreak />
                 <LineBreak />

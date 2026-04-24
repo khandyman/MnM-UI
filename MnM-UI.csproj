@@ -11,10 +11,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="images\background.PNG" />
+    <None Remove="fonts\CrimsonText-Bold.ttf" />
+    <None Remove="fonts\CrimsonText-Regular.ttf" />
+    <None Remove="fonts\CrimsonText-SemiBold.ttf" />
     <None Remove="images\border.PNG" />
-    <None Remove="images\button.PNG" />
+    <None Remove="images\control.png" />
     <None Remove="images\MnM.ico" />
+    <None Remove="images\windowstonebg1.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,9 +29,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="images\background.PNG" />
-    <Resource Include="images\border.PNG" />
+    <Resource Include="fonts\CrimsonText-Bold.ttf" />
+    <Resource Include="fonts\CrimsonText-Regular.ttf" />
+    <Resource Include="fonts\CrimsonText-SemiBold.ttf" />
     <Resource Include="images\button.PNG" />
+    <Resource Include="images\background.PNG" />
+    <Resource Include="images\control.png" />
     <Resource Include="images\MnM.ico" />
   </ItemGroup>
 
