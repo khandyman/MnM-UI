@@ -11,7 +11,8 @@
         ShowInTaskbar="False"
         Background="Transparent"
         BorderBrush="WhiteSmoke"
-        FontFamily="./fonts/#Crimson Text Regular (TrueType)" 
+        FontFamily="AR JULIAN" 
+        FontWeight="Regular"
         MouseDown="Window_MouseDown"
     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
     <Window.Resources>
@@ -296,47 +297,70 @@
             </Style.Triggers>
         </Style>
     </Window.Resources>
-    <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/images/background.PNG"
-            TileMode="Tile"
-            ViewportUnits="Absolute"
-            Viewport="0,0,100,100"
-            />
-        </Grid.Background>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30*" />
-            <RowDefinition Height="30*" />
-            <RowDefinition Height="40*" />
-        </Grid.RowDefinitions>
+    <Border BorderThickness="4" CornerRadius="4">
+        <Border.BorderBrush>
+            <ImageBrush ImageSource="/images/border.PNG"
+                    TileMode="Tile"
+                    ViewportUnits="Absolute"
+                    Viewport="0,0,20,20"
+                    />
+        </Border.BorderBrush>
 
-        <Label Grid.Row="0" DockPanel.Dock="Top" FontWeight="Bold" FontSize="16" Foreground="WhiteSmoke" 
-               VerticalAlignment="Center" HorizontalAlignment="Center">Select Template Character</Label>
 
-        <ComboBox Style="{DynamicResource ComboBoxStyle1}" Grid.Row="1" Margin="5" Padding="5" FontSize="16" FontWeight="Bold" Foreground="Black" x:Name="cmbCharacters">
-            <ComboBox.Background>
-                <ImageBrush ImageSource="/images/control.png"
+        <Grid>
+            <Grid.Background>
+                <ImageBrush ImageSource="/images/background.PNG"
                 TileMode="Tile"
                 ViewportUnits="Absolute"
                 Viewport="0,0,100,100"
                 />
-            </ComboBox.Background>
-            <ComboBox.ItemContainerStyle>
-                <Style TargetType="ComboBoxItem">
-                    <Setter Property="Background" Value="{Binding Background, RelativeSource={RelativeSource AncestorType=ComboBox}}" />
-                </Style>
-            </ComboBox.ItemContainerStyle>
-        </ComboBox>
+            </Grid.Background>
 
-        <Button Grid.Row="2" Margin="5" Padding="5" FontSize="20" FontWeight="ExtraBold" Foreground="WhiteSmoke" Width="150" Click="SelectCommand_Click">Select
-            <Button.Background>
-                <ImageBrush ImageSource="/images/button.PNG"
-                TileMode="Tile"
-                ViewportUnits="Absolute"
-                Viewport="0,0,100,100"
-                />
-            </Button.Background>
-        </Button>
-    </Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30*" />
+                <RowDefinition Height="30*" />
+                <RowDefinition Height="40*" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" DockPanel.Dock="Top" FontSize="16" Foreground="WhiteSmoke" 
+                   VerticalAlignment="Center" HorizontalAlignment="Center">Select Template Character</Label>
+
+            <ComboBox Style="{DynamicResource ComboBoxStyle1}" Grid.Row="1" Margin="5" Padding="5" FontSize="16" Foreground="Black" x:Name="cmbCharacters">
+                <ComboBox.Background>
+                    <ImageBrush ImageSource="/images/control.png"
+                    TileMode="Tile"
+                    ViewportUnits="Absolute"
+                    Viewport="0,0,100,100"
+                    />
+                </ComboBox.Background>
+                <ComboBox.ItemContainerStyle>
+                    <Style TargetType="ComboBoxItem">
+                        <Setter Property="Background" Value="{Binding Background, RelativeSource={RelativeSource AncestorType=ComboBox}}" />
+                    </Style>
+                </ComboBox.ItemContainerStyle>
+            </ComboBox>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Margin="5" Padding="5" FontSize="20" Foreground="WhiteSmoke" Width="100" Click="SelectCommand_Click">Select
+                    <Button.Background>
+                        <ImageBrush ImageSource="/images/button.PNG"
+                        TileMode="Tile"
+                        ViewportUnits="Absolute"
+                        Viewport="0,0,100,100"
+                        />
+                    </Button.Background>
+                </Button>
+                <Button Margin="5" Padding="5" FontSize="20" Foreground="WhiteSmoke" Width="100" Click="CancelCommand_Click">Cancel
+                    <Button.Background>
+                        <ImageBrush ImageSource="/images/button.PNG"
+                        TileMode="Tile"
+                        ViewportUnits="Absolute"
+                        Viewport="0,0,100,100"
+                        />
+                    </Button.Background>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Border>
 </Window>

@@ -5,74 +5,159 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MnM_UI"
         mc:Ignorable="d"
-        Title="HelpWindow" Height="700" Width="700"
+        Title="HelpWindow" Height="500" Width="700"
         WindowStyle="None"
         AllowsTransparency="True"
         ShowInTaskbar="False"
         Background="Transparent"
         BorderBrush="WhiteSmoke"
-        FontFamily="Comprehension-Dark" 
+        FontFamily="AR JULIAN"
+        FontWeight="Regular"
         MouseDown="Window_MouseDown">
-    
-    <Grid Margin="10">
-        <Grid.Background>
-            <ImageBrush ImageSource="/images/background.PNG"
+
+    <Border BorderThickness="4" CornerRadius="4">
+        <Border.BorderBrush>
+            <ImageBrush ImageSource="/images/border.PNG"
+                    TileMode="Tile"
+                    ViewportUnits="Absolute"
+                    Viewport="0,0,20,20"
+                    />
+        </Border.BorderBrush>
+
+        <Grid>
+            <Grid.Background>
+                <ImageBrush ImageSource="/images/background.PNG"
                 TileMode="Tile"
                 ViewportUnits="Absolute"
                 Viewport="0,0,100,100"
                 />
-        </Grid.Background>
+            </Grid.Background>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="25*" />
-            <RowDefinition Height="28*" />
-            <RowDefinition Height="35*" />
-            <RowDefinition Height="8*" />
-        </Grid.RowDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="85*" />
+                <RowDefinition Height="15*" />
+            </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Margin="5">
-            <Label Grid.Row="0" DockPanel.Dock="Top" FontWeight="Bold" FontSize="16" Foreground="WhiteSmoke" HorizontalAlignment="Left">Overview</Label>
-            <TextBlock Margin="5" TextWrapping="Wrap" FontSize="14" FontWeight="Bold" Foreground="WhiteSmoke">
-                This tool helps to manage the UI for Monsters and Memories by manipulating the json files that control window placement within the game.
-                <LineBreak />
-                <LineBreak />
-                It works with the default MnM UI directory, located at:
-                <LineBreak />
-                C:\Users\[YourUserName]\AppData\LocalLow\Niche Worlds Cult\Monsters and Memories\
-            </TextBlock>
-        </StackPanel>
+            <TabControl Grid.Row="0" Margin="5" FontSize="16" Foreground="WhiteSmoke">
+                <TabControl.Background>
+                    <ImageBrush ImageSource="/images/control.png"
+                    TileMode="Tile"
+                    ViewportUnits="Absolute"
+                    Viewport="0,0,100,100"
+                    />
+                </TabControl.Background>
+                <TabItem Header="Overview">
+                    <TextBlock Margin="5" TextWrapping="Wrap" FontSize="16" Foreground="Black">
+                        This tool helps to manage the UI and character journals for Monsters and Memories by manipulating the json files that control window placement within the game and the text files that contain journal entries.
+                        <LineBreak />
+                        <LineBreak />
+                        It works with the default MnM UI directory, located at:
+                        <LineBreak />
+                        C:\Users\[YourUserName]\AppData\LocalLow\Niche Worlds Cult\Monsters and Memories\
+                        <LineBreak />
+                        <LineBreak />
+                        Two functions are provided: Copy UI and Merge Journals. More about each function on their respective tabs.
+                    </TextBlock>
+                </TabItem>
+                <TabItem Header="Copy UI">
+                    <TextBlock Margin="5" TextWrapping="Wrap" FontSize="16" Foreground="Black">
+                        Copy UI Takes a template windows.json file (controls all window placement) and chats.json file (controls chat tabs and filters) and copies them to all characters in the MnM game directory. This allows you to set up a template UI and quickly apply it to the game.
+                        <LineBreak />
+                        <LineBreak />
+                        Start by double-clicking or right clicking the text box to select a template directory that contains both windows.json and chats.json. Then click the "Copy" button to apply the template to all characters. Note: this does not affect bag window placement.
+                        <LineBreak />
+                        <LineBreak />
+                        It is recommended to set up a separate template directory with the desired windows.json and chats.json files before using Copy UI. This protects your UI setup in case the game client resets all UIs. The downside is that it requires maintaining a separate directory and keeping it updated with any UI changes you make in game. 
+                        <LineBreak />
+                        <LineBreak />
+                        If you prefer you can use an existing character as your template. To do that, check the box for "Copy Existing Character?" and select a character from the dropdown.
+                    </TextBlock>
+                </TabItem>
+                <TabItem Header="Merge Journals">
+                    <TextBlock Margin="5" TextWrapping="Wrap" FontSize="16" Foreground="Black">
+                        Merge Journals is for moving between MnM installs on different computers. By default, because journal entries are saved locally, conversations you have in game on one machine will not show up in your journal on the other.
+                        <LineBreak />
+                        <LineBreak />
+                        Merge Journals solves that by integrating journal entries from a local MnM install with a backup of the game UI directory (presumably a network location accessible from both computers). This goes both directions; so you can merge journals on one computer, then do it again on another computer, and all journal entries should be updated.
+                        <LineBreak />
+                        <LineBreak />
+                        Start by double-clicking the text box to select a backup UI directory that contains a Player.Log file and folders for each server you play on. Then click the "Merge" button to merge local and backup journals together. Note: this does not affect journal entries that have already been merged, so you can merge multiple times without worrying about duplicates.
+                        <LineBreak />
+                        <LineBreak />
+                        If you want the program to create a backup of your UI directory for you to use for merging, just click the checkbox for "Create Backup?".
+                    </TextBlock>
+                </TabItem>
+            </TabControl>
+            <Button Grid.Row="1" Margin="5" Padding="5" FontSize="30" Foreground="WhiteSmoke" Width="150" Click="CloseCommand_Click">Close
+                <Button.Background>
+                    <ImageBrush ImageSource="/images/button.PNG"
+                    TileMode="Tile"
+                    ViewportUnits="Absolute"
+                    Viewport="0,0,100,100"
+                    />
+                </Button.Background>
+            </Button>
+        </Grid>
+        <!--<Grid>
+            <Grid.Background>
+                <ImageBrush ImageSource="/images/background.PNG"
+                    TileMode="Tile"
+                    ViewportUnits="Absolute"
+                    Viewport="0,0,100,100"
+                    />
+            </Grid.Background>
 
-        <StackPanel Grid.Row="1" Margin="5">
-            <Label Grid.Row="0" DockPanel.Dock="Top" FontWeight="Bold" FontSize="16" Foreground="WhiteSmoke" HorizontalAlignment="Left">Copy UI</Label>
-            <TextBlock Margin="5" TextWrapping="Wrap" FontSize="14" FontWeight="Bold" Foreground="WhiteSmoke">
-                Takes template windows.json (controls all window placement) and chats.json (controls chat tabs and filters) files and copies them to all characters in the MnM game directory. This allows you to set up a template UI and quickly apply it to the game.
-                <LineBreak />
-                <LineBreak />
-                Start by double-clicking the text box to select a template directory that contains both windows.json and chats.json. Then click the "Copy" button to apply the template to all characters. Note: this does not affect bag window placement.
-            </TextBlock>
-        </StackPanel>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25*" />
+                <RowDefinition Height="28*" />
+                <RowDefinition Height="35*" />
+                <RowDefinition Height="8*" />
+            </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="2" Margin="5">
-            <Label Grid.Row="0" DockPanel.Dock="Top" FontWeight="Bold" FontSize="16" Foreground="WhiteSmoke" HorizontalAlignment="Left">Merge Journals</Label>
-            <TextBlock Margin="5" TextWrapping="Wrap" FontSize="14" FontWeight="Bold" Foreground="WhiteSmoke">
-                This is primarily for moving between MnM installs on different computers. Because journal entries are saved locally, conversations you have on one machine will not show up on the other.
-                <LineBreak />
-                <LineBreak />
-                Merge Journals solves that by integrating journal entries from a local MnM install with a backup of the game UI directory. This goes both directions; so you can merge journals on one computer, then do it again on another computer, and all journal entries should be updated.
-                <LineBreak />
-                <LineBreak />
-                Start by double-clicking the text box to select a backup UI directory that contains a Player.Log file and folders for each server you play on. Then click the "Merge" button to merge local and backup journals together. Note: this does not affect journal entries that have already been merged, so you can merge multiple times without worrying about duplicates.
-            </TextBlock>
-        </StackPanel>
+            <StackPanel Grid.Row="0" Margin="5">
+                <Label Grid.Row="0" DockPanel.Dock="Top" FontSize="18" Foreground="WhiteSmoke" HorizontalAlignment="Left">Overview</Label>
+                <TextBlock Margin="5" TextWrapping="Wrap" FontSize="16" Foreground="WhiteSmoke">
+                    This tool helps to manage the UI for Monsters and Memories by manipulating the json files that control window placement within the game.
+                    <LineBreak />
+                    <LineBreak />
+                    It works with the default MnM UI directory, located at:
+                    <LineBreak />
+                    C:\Users\[YourUserName]\AppData\LocalLow\Niche Worlds Cult\Monsters and Memories\
+                </TextBlock>
+            </StackPanel>
 
-        <Button Grid.Row="3" Margin="5" Padding="5" FontSize="15" FontWeight="ExtraBold" Foreground="WhiteSmoke" Width="150" Click="CloseCommand_Click">Close
-            <Button.Background>
-                <ImageBrush ImageSource="/images/button.PNG"
-                TileMode="Tile"
-                ViewportUnits="Absolute"
-                Viewport="0,0,100,100"
-                />
-            </Button.Background>
-        </Button>
-    </Grid>
+            <StackPanel Grid.Row="1" Margin="5">
+                <Label Grid.Row="0" DockPanel.Dock="Top" FontSize="18" Foreground="WhiteSmoke" HorizontalAlignment="Left">Copy UI</Label>
+                <TextBlock Margin="5" TextWrapping="Wrap" FontSize="16" Foreground="WhiteSmoke">
+                    Takes template windows.json (controls all window placement) and chats.json (controls chat tabs and filters) files and copies them to all characters in the MnM game directory. This allows you to set up a template UI and quickly apply it to the game.
+                    <LineBreak />
+                    <LineBreak />
+                    Start by double-clicking the text box to select a template directory that contains both windows.json and chats.json. Then click the "Copy" button to apply the template to all characters. Note: this does not affect bag window placement.
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Margin="5">
+                <Label Grid.Row="0" DockPanel.Dock="Top" FontSize="18" Foreground="WhiteSmoke" HorizontalAlignment="Left">Merge Journals</Label>
+                <TextBlock Margin="5" TextWrapping="Wrap" FontSize="16" Foreground="WhiteSmoke">
+                    This is primarily for moving between MnM installs on different computers. Because journal entries are saved locally, conversations you have on one machine will not show up on the other.
+                    <LineBreak />
+                    <LineBreak />
+                    Merge Journals solves that by integrating journal entries from a local MnM install with a backup of the game UI directory. This goes both directions; so you can merge journals on one computer, then do it again on another computer, and all journal entries should be updated.
+                    <LineBreak />
+                    <LineBreak />
+                    Start by double-clicking the text box to select a backup UI directory that contains a Player.Log file and folders for each server you play on. Then click the "Merge" button to merge local and backup journals together. Note: this does not affect journal entries that have already been merged, so you can merge multiple times without worrying about duplicates.
+                </TextBlock>
+            </StackPanel>
+
+            <Button Grid.Row="3" Margin="5" Padding="5" FontSize="30" Foreground="WhiteSmoke" Width="150" Click="CloseCommand_Click">Close
+                <Button.Background>
+                    <ImageBrush ImageSource="/images/button.PNG"
+                    TileMode="Tile"
+                    ViewportUnits="Absolute"
+                    Viewport="0,0,100,100"
+                    />
+                </Button.Background>
+            </Button>
+        </Grid>-->
+    </Border>
 </Window>

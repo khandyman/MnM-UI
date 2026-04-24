@@ -11,10 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="fonts\CrimsonText-Bold.ttf" />
-    <None Remove="fonts\CrimsonText-Regular.ttf" />
-    <None Remove="fonts\CrimsonText-SemiBold.ttf" />
-    <None Remove="images\border.PNG" />
+    <None Remove="images\border.png" />
     <None Remove="images\control.png" />
     <None Remove="images\MnM.ico" />
     <None Remove="images\windowstonebg1.png" />
@@ -28,10 +25,9 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Resource Include="fonts\CrimsonText-Bold.ttf" />
-    <Resource Include="fonts\CrimsonText-Regular.ttf" />
-    <Resource Include="fonts\CrimsonText-SemiBold.ttf" />
+  <ItemGroup>    
+    <Resource Include="fonts\Crimson Text.ttf" />
+    <Resource Include="images\border.png" />
     <Resource Include="images\button.PNG" />
     <Resource Include="images\background.PNG" />
     <Resource Include="images\control.png" />

@@ -39,5 +39,10 @@ namespace MnM_UI
                 this.DragMove();
             }
         }
+
+        private void CancelCommand_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
