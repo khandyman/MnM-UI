@@ -101,14 +101,26 @@ namespace MnM_UI
         {
             if (Validation.ValidateJournalChange(txtJournalPath.Text))
             {
+                bool listboxUpdated;
+                lstOutput.Items.Clear();
+
                 BuildPaths buildPaths = new(this.TemplateDirectory, this.JournalDirectory);
 
                 List<string> allCharacters = buildPaths.GetCharacters(GameDirectory);
 
                 foreach (string character in allCharacters)
                 {
+                    listboxUpdated = false;
                     string sourceJournalPath = $@"{GameDirectory}\{character}\journal";
                     string destJournalPath = $@"{JournalDirectory}\{character}\journal";
+
+                    if (Directory.Exists(sourceJournalPath) || Directory.Exists(destJournalPath))
+                    {
+                        int slashIndex = character.LastIndexOf('\\');
+                        lstOutput.Items.Add($"---------------- Journals for " +
+                                            $"{character.Substring(slashIndex + 1)} on " +
+                                            $"{character.Substring(0, slashIndex)} ----------------");
+                    }
 
                     if (Directory.Exists(sourceJournalPath))
                     {
@@ -117,9 +129,11 @@ namespace MnM_UI
                         foreach (string sourceJournal in sourceJournals)
                         {
                             string journalFile = Path.GetFileName(sourceJournal);
-                            lstOutput.Items.Add($"Merging {journalFile} for {character}...");
-
                             string destJournal = $@"{destJournalPath}\{journalFile}";
+
+                            lstOutput.Items.Add($"Merging {journalFile}...");
+                            listboxUpdated = true;
+
                             MergeJournals.CopyJournal(sourceJournal, destJournal);
                         }
                     }
@@ -132,6 +146,12 @@ namespace MnM_UI
                         {
                             string journalFile = Path.GetFileName(destJournal);
                             string sourceJournal = $@"{sourceJournalPath}\{journalFile}";
+
+                            if (listboxUpdated == false)
+                            {
+                                lstOutput.Items.Add($"Merging {journalFile}...");
+                            }
+
                             MergeJournals.CopyJournal(destJournal, sourceJournal);
                         }
                     }

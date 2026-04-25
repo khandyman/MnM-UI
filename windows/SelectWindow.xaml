@@ -342,7 +342,7 @@
             </ComboBox>
 
             <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Margin="5" Padding="5" FontSize="20" Foreground="WhiteSmoke" Width="100" Click="SelectCommand_Click">Select
+                <Button Margin="5" Padding="5" FontSize="20" Height="40" Foreground="WhiteSmoke" Width="100" Click="SelectCommand_Click">Select
                     <Button.Background>
                         <ImageBrush ImageSource="/images/button.PNG"
                         TileMode="Tile"
@@ -351,7 +351,7 @@
                         />
                     </Button.Background>
                 </Button>
-                <Button Margin="5" Padding="5" FontSize="20" Foreground="WhiteSmoke" Width="100" Click="CancelCommand_Click">Cancel
+                <Button Margin="5" Padding="5" FontSize="20" Height="40" Foreground="WhiteSmoke" Width="100" Click="CancelCommand_Click">Cancel
                     <Button.Background>
                         <ImageBrush ImageSource="/images/button.PNG"
                         TileMode="Tile"

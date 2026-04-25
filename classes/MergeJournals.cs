@@ -45,7 +45,9 @@ namespace MnM_UI.classes
             string[] sourceLines = File.ReadAllLines(sourcePath);
             string[] destLines = File.ReadAllLines(destPath);
 
-            IEnumerable<string> mergedLines = sourceLines.Union(destLines).Where(s => !string.IsNullOrWhiteSpace(s));
+            IEnumerable<string> mergedLines = sourceLines.Union(destLines)
+                                                            .Where(s => !string.IsNullOrWhiteSpace(s))
+                                                            .OrderByDescending(x => x);
             string mergedJournal = string.Join(Environment.NewLine + Environment.NewLine, mergedLines);
 
             return mergedJournal;
