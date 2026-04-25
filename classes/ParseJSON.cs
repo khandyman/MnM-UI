@@ -16,7 +16,7 @@ namespace MnM_UI.classes
             }
             else
             {
-                WindowList newData = JsonConvert.DeserializeObject<WindowList>(sourceJson);
+                WindowList newData = JsonConvert.DeserializeObject<WindowList>(sourceJson) ?? new WindowList { SaveData = new List<WindowItem>() };
 
                 return newData;
             }

@@ -25,7 +25,7 @@ namespace MnM_UI.classes
                 foreach (string character in serverCharacters)
                 {
                     string charName = new DirectoryInfo(character).Name;
-                    string serverName = new DirectoryInfo(character).Parent.Name;
+                    string serverName = new DirectoryInfo(character).Parent?.Name ?? string.Empty;
 
                     allCharacters.Add($@"{serverName}\{charName}");
                 }

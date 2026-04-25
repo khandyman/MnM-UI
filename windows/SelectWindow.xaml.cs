@@ -9,7 +9,7 @@ namespace MnM_UI
     /// </summary>
     public partial class SelectWindow : Window
     {
-        MainWindow Parent;
+        private MainWindow Parent;
 
         public SelectWindow(MainWindow parent)
         {
@@ -24,7 +24,7 @@ namespace MnM_UI
 
         private void SelectCommand_Click(object sender, RoutedEventArgs e)
         {
-            string selectedCharacter = cmbCharacters.SelectedItem.ToString();
+            string selectedCharacter = cmbCharacters.SelectedItem.ToString() ?? string.Empty;
             string templatePath = $@"{MainWindow.GameDirectory}\{selectedCharacter}";
             Parent.txtTemplatePath.Text = templatePath;
             Parent.chkCopyCharacter.IsChecked = false;
@@ -42,6 +42,7 @@ namespace MnM_UI
 
         private void CancelCommand_Click(object sender, RoutedEventArgs e)
         {
+            Parent.chkCopyCharacter.IsChecked = false;
             this.Close();
         }
     }

@@ -76,8 +76,8 @@ namespace MnM_UI
                 BuildPaths buildPaths = new(this.TemplateDirectory, this.JournalDirectory);
 
                 List<string> allCharacters = buildPaths.GetCharacters(GameDirectory);
-                string sourceWindowsPath = buildPaths.WindowsPath;
-                string sourceChatsPath = buildPaths.ChatsPath;
+                string sourceWindowsPath = buildPaths.WindowsPath ?? string.Empty;
+                string sourceChatsPath = buildPaths.ChatsPath ?? string.Empty;
 
                 lstOutput.Items.Clear();
 
@@ -86,13 +86,16 @@ namespace MnM_UI
                     string destWindowsPath = $@"{GameDirectory}\{path}\windows.json";
                     string destChatsPath = $@"{GameDirectory}\{path}\chats.json";
 
-                    lstOutput.Items.Add($"Merging and copying windows.json to {path}...");
-                    CopyFiles.CopyWindows(sourceWindowsPath, destWindowsPath);
+                    if (!sourceWindowsPath.Equals(destWindowsPath))
+                    {
+                        lstOutput.Items.Add($"Merging and copying windows.json to {path}...");
+                        CopyFiles.CopyWindows(sourceWindowsPath, destWindowsPath);
 
-                    lstOutput.Items.Add($"Copying chats.json to {path}...");
-                    CopyFiles.CopyChats(sourceChatsPath, destChatsPath);
+                        lstOutput.Items.Add($"Copying chats.json to {path}...");
+                        CopyFiles.CopyChats(sourceChatsPath, destChatsPath);
 
-                    lstOutput.Items.Add("--------------------------------------------");
+                        lstOutput.Items.Add("--------------------------------------------");
+                    }
                 }
             }
         }
