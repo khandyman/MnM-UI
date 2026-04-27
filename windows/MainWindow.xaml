@@ -77,7 +77,7 @@
                 <!-- Copy UI -->
                 <Border Grid.Row="1" Grid.Column="0" Margin="0,0,5,0" BorderBrush="WhiteSmoke" BorderThickness="1">
                     <DockPanel Margin="5,0,5,0">
-                        <Label DockPanel.Dock="Top" FontSize="16" Foreground="WhiteSmoke" HorizontalAlignment="Center">Copy UI</Label>
+                        <Label DockPanel.Dock="Top" FontSize="16" Foreground="WhiteSmoke" HorizontalAlignment="Center">Copy Windows</Label>
                         <Label DockPanel.Dock="Top" Margin="10,0,0,0" FontSize="14" Foreground="WhiteSmoke">UI Template Folder</Label>
                         <TextBox DockPanel.Dock="Top" x:Name="txtTemplatePath" x:FieldModifier="public" Margin="5,6,5,6" Padding="5" FontSize="16"
                                  MouseDoubleClick="ChangeTemplate_Click" ToolTip="Select a &quot;Template&quot; Directory with both windows.json and chats.json inside">

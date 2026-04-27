@@ -59,15 +59,15 @@
                         Two functions are provided: Copy UI and Merge Journals. More about each function on their respective tabs.
                     </TextBlock>
                 </TabItem>
-                <TabItem Header="Copy UI">
+                <TabItem Header="Copy Windows">
                     <TextBlock Margin="5" TextWrapping="Wrap" FontSize="16" Foreground="Black">
-                        Copy UI Takes a template windows.json file (controls all window placement) and chats.json file (controls chat tabs and filters) and copies them to all characters in the MnM game directory. This allows you to set up a template UI and quickly apply it to the game.
+                        Copy Windows Takes a template windows.json file (controls all window placement) and chats.json file (controls chat tabs and filters) and copies them to all characters in the MnM game directory. This allows you to set up a template UI and quickly apply it to the game.
                         <LineBreak />
                         <LineBreak />
                         Start by double-clicking or right clicking the text box to select a template directory that contains both windows.json and chats.json. Then click the "Copy" button to apply the template to all characters. Note: this does not affect bag window placement.
                         <LineBreak />
                         <LineBreak />
-                        It is recommended to set up a separate template directory with the desired windows.json and chats.json files before using Copy UI. This protects your UI setup in case the game client resets all UIs. The downside is that it requires maintaining a separate directory and keeping it updated with any UI changes you make in game. 
+                        It is recommended to set up a separate template directory with the desired windows.json and chats.json files before using Copy Windows. This protects your UI setup in case the game client resets all UIs. The downside is that it requires maintaining a separate directory and keeping it updated with any UI changes you make in game. 
                         <LineBreak />
                         <LineBreak />
                         If you prefer you can use an existing character as your template. To do that, check the box for "Copy Existing Character?" and select a character from the dropdown.
