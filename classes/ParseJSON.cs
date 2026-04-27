@@ -8,15 +8,15 @@ namespace MnM_UI.classes
         {
         }
 
-        public WindowList Deserialize(string sourceJson)
+        public WindowList Deserialize(string jsonFile)
         {
-            if (string.IsNullOrEmpty(sourceJson))
+            if (string.IsNullOrEmpty(jsonFile))
             {
                 return new WindowList { SaveData = new List<WindowItem>() };
             }
             else
             {
-                WindowList newData = JsonConvert.DeserializeObject<WindowList>(sourceJson) ?? new WindowList { SaveData = new List<WindowItem>() };
+                WindowList newData = JsonConvert.DeserializeObject<WindowList>(jsonFile) ?? new WindowList { SaveData = new List<WindowItem>() };
 
                 return newData;
             }
@@ -35,25 +35,25 @@ namespace MnM_UI.classes
             return newJson;
         }
 
-        public WindowList MergeJson(WindowList sourceData, WindowList destData)
+        public WindowList MergeJson(WindowList templateData, WindowList gameData)
         {
-            foreach (var sourceItem in sourceData.SaveData.ToList())
+            foreach (var templateItem in templateData.SaveData.ToList())
             {
-                if (sourceItem.identifier.Contains("bagpanel") && !sourceItem.identifier.Contains("6588"))
+                if (templateItem.identifier.Contains("bagpanel") && !templateItem.identifier.Contains("6588"))
                 {
-                    sourceData.SaveData.Remove(sourceItem);
+                    templateData.SaveData.Remove(templateItem);
                 }
             }
 
-            foreach (var destItem in destData.SaveData)
+            foreach (var gameItem in gameData.SaveData)
             {
-                if (destItem.identifier.Contains("bagpanel") && !destItem.identifier.Contains("6588"))
+                if (gameItem.identifier.Contains("bagpanel") && !gameItem.identifier.Contains("6588"))
                 {
-                    sourceData.SaveData.Add(destItem);
+                    templateData.SaveData.Add(gameItem);
                 }
             }
 
-            return sourceData;
+            return templateData;
         }
 
         public class WindowList

@@ -26,8 +26,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
   </ItemGroup>
 
-  <ItemGroup>    
-    <Resource Include="fonts\Crimson Text.ttf" />
+  <ItemGroup>
     <Resource Include="images\border.png" />
     <Resource Include="images\button.PNG" />
     <Resource Include="images\background.PNG" />

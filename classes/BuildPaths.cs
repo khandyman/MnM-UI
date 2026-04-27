@@ -4,13 +4,13 @@ namespace MnM_UI.classes
 {
     public class BuildPaths
     {
-        public string? WindowsPath { get; }
-        public string? ChatsPath { get; }
+        public string? templateWindowsPath { get; }
+        public string? templateChatsPath { get; }
 
         public BuildPaths(string? templatePath, string? journalPath)
         {
-            WindowsPath = templatePath + @"\windows.json";
-            ChatsPath = templatePath + @"\chats.json";
+            templateWindowsPath = templatePath + @"\windows.json";
+            templateChatsPath = templatePath + @"\chats.json";
         }
 
         public List<string> GetCharacters(string gameDirectory)

@@ -11,25 +11,25 @@ namespace MnM_UI.classes
             ParseJson = new();
         }
 
-        public void CopyWindows(string sourcePath, string destPath)
+        public void CopyWindows(string templatePath, string gamePath)
         {
-            string sourceJson = File.ReadAllText(sourcePath);
-            string destJson = "";
+            string templateJson = File.ReadAllText(templatePath);
+            string gameJson = "";
 
-            if (File.Exists(destPath))
+            if (File.Exists(gamePath))
             {
-                destJson = File.ReadAllText(destPath);
+                gameJson = File.ReadAllText(gamePath);
             }
 
-            ParseJSON.WindowList mergedData = ParseJson.MergeJson(ParseJson.Deserialize(sourceJson), ParseJson.Deserialize(destJson));
+            ParseJSON.WindowList mergedData = ParseJson.MergeJson(ParseJson.Deserialize(templateJson), ParseJson.Deserialize(gameJson));
             string newJson = ParseJson.Serialize(mergedData);
         
-            File.WriteAllText(destPath, newJson);
+            File.WriteAllText(gamePath, newJson);
         }
 
-        public void CopyChats(string sourcePath, string destPath)
+        public void CopyChats(string templatePath, string gamePath)
         {
-            File.Copy(sourcePath, destPath, true);
+            File.Copy(templatePath, gamePath, true);
         }
     }
 }
