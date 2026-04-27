@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.IO;
 
 namespace MnM_UI.classes
 {
@@ -6,6 +7,41 @@ namespace MnM_UI.classes
     {
         public ParseJSON()
         {
+        }
+
+        public OwnerList GetOwnerList(string jsonFile)
+        {
+            if (string.IsNullOrEmpty(jsonFile))
+            {
+                return new OwnerList { OwnerData = new List<OwnerID>() };
+            }
+            else
+            {
+                OwnerList newData = JsonConvert.DeserializeObject<OwnerList>(jsonFile) ?? new OwnerList { OwnerData = new List<OwnerID>() };
+
+                return newData;
+            }
+        }
+
+        public string FindOwnerID(string ownerName)
+        {
+            string ownerID = string.Empty;
+            if (!string.IsNullOrEmpty(ownerName))
+            {
+                string path = @"G:\My Drive\MnM\UI_Master\ownerIDs.json";
+                string data = File.ReadAllText(path);
+
+                OwnerList ownerList = GetOwnerList(data);
+
+                foreach (var owner in ownerList.OwnerData)
+                {
+                    if (owner.name.Equals(ownerName, StringComparison.OrdinalIgnoreCase))
+                    {
+                        return owner.id;
+                    }
+                }
+            }
+            return ownerID;
         }
 
         public WindowList Deserialize(string jsonFile)
@@ -54,6 +90,17 @@ namespace MnM_UI.classes
             }
 
             return templateData;
+        }
+
+        public class OwnerList
+        {
+            public required List<OwnerID> OwnerData { get; set; }
+        }
+
+        public class OwnerID 
+        {
+            public required string name { get; set; }
+            public required string id { get; set; }
         }
 
         public class WindowList
