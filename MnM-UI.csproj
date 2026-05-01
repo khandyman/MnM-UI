@@ -15,6 +15,9 @@
     <None Remove="images\control.png" />
     <None Remove="images\logo.png" />
     <None Remove="images\MnM.ico" />
+    <None Remove="images\tab.png" />
+    <None Remove="images\tab_selected.png" />
+    <None Remove="images\tab_unselected.png" />
     <None Remove="images\windowstonebg1.png" />
   </ItemGroup>
 
@@ -33,6 +36,8 @@
     <Resource Include="images\control.png" />
     <Resource Include="images\logo.png" />
     <Resource Include="images\MnM.ico" />
+    <Resource Include="images\tab_selected.png" />
+    <Resource Include="images\tab_unselected.png" />
   </ItemGroup>
 
 </Project>

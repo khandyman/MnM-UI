@@ -46,6 +46,21 @@
                     Viewport="0,0,100,100"
                     />
                 </TabControl.Background>
+
+                <!--<TabControl.ItemContainerStyle>
+                    <Style TargetType="TabItem">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <ImageBrush ImageSource="/images/tab_unselected.png"
+                            TileMode="Tile"
+                            ViewportUnits="Absolute"
+                            Viewport="0,0,100,100"
+                            />
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TabControl.ItemContainerStyle>-->
+
                 <TabItem Header="Overview">
                     <TextBlock Margin="5" TextWrapping="Wrap" FontSize="16" Foreground="Black">
                         This tool helps to manage the UI and character journals for Monsters and Memories by manipulating the json files that control window placement within the game and the text files that contain journal entries.

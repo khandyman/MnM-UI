@@ -30,8 +30,8 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="10*" />
-                <RowDefinition Height="30*" />
-                <RowDefinition Height="50*" />
+                <RowDefinition Height="35*" />
+                <RowDefinition Height="45*" />
                 <RowDefinition Height="10*" />
             </Grid.RowDefinitions>
 
@@ -66,80 +66,109 @@
                 </StackPanel>
             </Label>
 
-            <Grid Margin="5" Grid.Row="1">
+            <!--<Grid Margin="5" Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+                </Grid.ColumnDefinitions>-->
 
-                
+            <TabControl Grid.Row="1" Margin="5" FontSize="16">
+                <TabControl.Background>
+                    <ImageBrush ImageSource="/images/background.PNG"
+                    TileMode="Tile"
+                    ViewportUnits="Absolute"
+                    Viewport="0,0,100,100"
+                    />
+                </TabControl.Background>
 
-                <!-- Copy UI -->
-                <Border Grid.Row="1" Grid.Column="0" Margin="0,0,5,0" BorderBrush="WhiteSmoke" BorderThickness="1">
-                    <DockPanel Margin="5,0,5,0">
-                        <Label DockPanel.Dock="Top" FontSize="16" Foreground="WhiteSmoke" HorizontalAlignment="Center">Copy Windows</Label>
-                        <Label DockPanel.Dock="Top" Margin="10,0,0,0" FontSize="14" Foreground="WhiteSmoke">UI Template Folder</Label>
-                        <TextBox DockPanel.Dock="Top" x:Name="txtTemplatePath" x:FieldModifier="public" Margin="5,6,5,6" Padding="5" FontSize="16"
-                                 MouseDoubleClick="ChangeTemplate_Click" ToolTip="Select a &quot;Template&quot; Directory with both windows.json and chats.json inside">
-                            <TextBox.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Header="Change" Click="ChangeTemplate_Click" />
-                                </ContextMenu>
-                            </TextBox.ContextMenu>
-                            <TextBox.Background>
-                                <ImageBrush ImageSource="/images/control.png"
-                                TileMode="Tile"
-                                ViewportUnits="Absolute"
-                                Viewport="0,0,100,100"
-                                />
-                            </TextBox.Background>
-                        </TextBox>
-                        <CheckBox DockPanel.Dock="Top" x:Name="chkCopyCharacter" Margin="5,5,5,5" FontSize="14" Foreground="WhiteSmoke" Click="CopyCharacter_Click">Copy Existing Character?</CheckBox>
-                        <Button DockPanel.Dock="Bottom" x:Name="btnCopy" Margin="5,7,5,7" Padding="5" FontSize="30" Height="50" Foreground="WhiteSmoke" Click="ButtonCopy_Click">Copy
-                            <Button.Background>
-                                <ImageBrush ImageSource="/images/button.PNG"
+                <!--<TabControl.ItemContainerStyle>
+                    <Style TargetType="TabItem">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <ImageBrush ImageSource="/images/tab_unselected.png"
                                             TileMode="Tile"
                                             ViewportUnits="Absolute"
                                             Viewport="0,0,100,100"
                                             />
-                            </Button.Background>
-                        </Button>
-                    </DockPanel>
-                </Border>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TabControl.ItemContainerStyle>-->
 
-                <!-- Merge Journals -->
-                <Border Grid.Row="1" Grid.Column="1" Margin="5,0,0,0" BorderBrush="WhiteSmoke" BorderThickness="1">
-                    <DockPanel Margin="5,0,5,0">
-                        <Label DockPanel.Dock="Top" FontSize="16" Foreground="WhiteSmoke" HorizontalAlignment="Center">Merge Journals</Label>
-                        <Label DockPanel.Dock="Top" Margin="10,0,0,0" FontSize="14" Foreground="WhiteSmoke">Journal Backup Folder</Label>
-                        <TextBox DockPanel.Dock="Top" x:Name="txtJournalPath" x:FieldModifier="public" Margin="5,6,5,6" Padding="5" FontSize="16"
-                                 MouseDoubleClick="ChangeJournal_Click" ToolTip="Select a Monsters and Memories directory you want to merge journals to/from">
-                            <TextBox.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Header="Change" Click="ChangeJournal_Click" />
-                                </ContextMenu>
-                            </TextBox.ContextMenu>
-                            <TextBox.Background>
-                                <ImageBrush ImageSource="/images/control.png"
-                                TileMode="Tile"
-                                ViewportUnits="Absolute"
-                                Viewport="0,0,100,100"
-                                />
-                            </TextBox.Background>
-                        </TextBox>
-                        <CheckBox DockPanel.Dock="Top" x:Name="chkNewBackup" Margin="5,5,5,5" FontSize="14" Foreground="WhiteSmoke" Click="NewBackup_Click">Create New Backup?</CheckBox>
-                        <Button DockPanel.Dock="Bottom" x:Name="btnMerge" Margin="5,7,5,7" Padding="5" FontSize="30" Height="50" Foreground="WhiteSmoke" BorderThickness="1" Click="ButtonMerge_Click">Merge
-                            <Button.Background>
-                                <ImageBrush ImageSource="/images/button.PNG"
-                                            TileMode="Tile"
-                                            ViewportUnits="Absolute"
-                                            Viewport="0,0,100,100"
-                                            />
-                            </Button.Background>
-                        </Button>
-                    </DockPanel>
-                </Border>
-            </Grid>
+                <TabItem Header="Copy Windows">
+                    <!-- Copy UI -->
+                    <Border Grid.Row="0" Grid.Column="0" Margin="0,0,5,0" BorderBrush="WhiteSmoke" BorderThickness="1">
+                        <DockPanel Margin="5,0,5,0">
+                            <Label DockPanel.Dock="Top" FontSize="16" Foreground="WhiteSmoke" HorizontalAlignment="Center">Copy Windows</Label>
+                            <Label DockPanel.Dock="Top" Margin="10,0,0,0" FontSize="14" Foreground="WhiteSmoke">UI Template Folder</Label>
+                            <TextBox DockPanel.Dock="Top" x:Name="txtTemplatePath" x:FieldModifier="public" Margin="5,6,5,6" Padding="5" FontSize="16"
+                                     MouseDoubleClick="ChangeTemplate_Click" ToolTip="Select a &quot;Template&quot; Directory with both windows.json and chats.json inside">
+                                <TextBox.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Change" Click="ChangeTemplate_Click" />
+                                    </ContextMenu>
+                                </TextBox.ContextMenu>
+                                <TextBox.Background>
+                                    <ImageBrush ImageSource="/images/control.png"
+                                    TileMode="Tile"
+                                    ViewportUnits="Absolute"
+                                    Viewport="0,0,100,100"
+                                    />
+                                </TextBox.Background>
+                            </TextBox>
+                            <DockPanel DockPanel.Dock="Top" Margin="5,0,5,0">
+                                <CheckBox DockPanel.Dock="Left" x:Name="chkIncludeBags" Margin="5,5,5,5" FontSize="14" Foreground="WhiteSmoke">Inclue Bag Positions</CheckBox>
+                                <CheckBox DockPanel.Dock="Right" x:Name="chkCopyCharacter" Margin="5,5,5,5" FontSize="14" Foreground="WhiteSmoke" FlowDirection="RightToLeft" Click="CopyCharacter_Click">Copy Existing Character</CheckBox>
+                            </DockPanel>
+                            <Button DockPanel.Dock="Bottom" x:Name="btnCopy" Margin="5,7,5,7" Padding="5" FontSize="30" Height="50" Foreground="WhiteSmoke" Click="ButtonCopy_Click">Copy
+                                <Button.Background>
+                                    <ImageBrush ImageSource="/images/button.PNG"
+                                                TileMode="Tile"
+                                                ViewportUnits="Absolute"
+                                                Viewport="0,0,100,100"
+                                                />
+                                </Button.Background>
+                            </Button>
+                        </DockPanel>
+                    </Border>
+                </TabItem>
+
+                <TabItem Header="Merge Journals">
+                    <!-- Merge Journals -->
+                    <Border Grid.Row="1" Grid.Column="1" Margin="5,0,0,0" BorderBrush="WhiteSmoke" BorderThickness="1">
+                        <DockPanel Margin="5,0,5,0">
+                            <Label DockPanel.Dock="Top" FontSize="16" Foreground="WhiteSmoke" HorizontalAlignment="Center">Merge Journals</Label>
+                            <Label DockPanel.Dock="Top" Margin="10,0,0,0" FontSize="14" Foreground="WhiteSmoke">Journal Backup Folder</Label>
+                            <TextBox DockPanel.Dock="Top" x:Name="txtJournalPath" x:FieldModifier="public" Margin="5,6,5,6" Padding="5" FontSize="16"
+                                     MouseDoubleClick="ChangeJournal_Click" ToolTip="Select a Monsters and Memories directory you want to merge journals to/from">
+                                <TextBox.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Change" Click="ChangeJournal_Click" />
+                                    </ContextMenu>
+                                </TextBox.ContextMenu>
+                                <TextBox.Background>
+                                    <ImageBrush ImageSource="/images/control.png"
+                                    TileMode="Tile"
+                                    ViewportUnits="Absolute"
+                                    Viewport="0,0,100,100"
+                                    />
+                                </TextBox.Background>
+                            </TextBox>
+                            <CheckBox DockPanel.Dock="Top" x:Name="chkNewBackup" Margin="5,5,5,5" FontSize="14" Foreground="WhiteSmoke" Click="NewBackup_Click">Create New Backup</CheckBox>
+                            <Button DockPanel.Dock="Bottom" x:Name="btnMerge" Margin="5,7,5,7" Padding="5" FontSize="30" Height="50" Foreground="WhiteSmoke" BorderThickness="1" Click="ButtonMerge_Click">Merge
+                                <Button.Background>
+                                    <ImageBrush ImageSource="/images/button.PNG"
+                                                TileMode="Tile"
+                                                ViewportUnits="Absolute"
+                                                Viewport="0,0,100,100"
+                                                />
+                                </Button.Background>
+                            </Button>
+                        </DockPanel>
+                    </Border>
+                </TabItem>
+            </TabControl>
+            <!--</Grid>-->
 
             <!-- Program Output -->
             <Border Grid.Row="2" Margin="5" BorderBrush="WhiteSmoke" BorderThickness="1">
