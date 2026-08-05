@@ -13,6 +13,11 @@ namespace MnM_UI.classes
         {
             if (!File.Exists(destPath))
             {
+                if (!Directory.Exists(Path.GetDirectoryName(destPath)))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(destPath));
+                }
+
                 File.Copy(sourcePath, destPath, true);
             }
             else
