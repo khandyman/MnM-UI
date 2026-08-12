@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Microsoft.Win32;
@@ -69,7 +70,7 @@ namespace MnM_UI
             }
         }
 
-        private void ButtonCopy_Click(object sender, RoutedEventArgs e)
+        private async void ButtonCopy_Click(object sender, RoutedEventArgs e)
         {
             if (Validation.ValidateTemplateChange(txtTemplatePath.Text))
             {
@@ -89,10 +90,10 @@ namespace MnM_UI
                     if (!templateWindowsPath.Equals(gameWindowsPath))
                     {
                         lstOutput.Items.Add($"Merging and copying windows.json to {path}...");
-                        CopyFiles.CopyWindows(templateWindowsPath, gameWindowsPath);
+                        await Task.Run(() => CopyFiles.CopyWindows(templateWindowsPath, gameWindowsPath));
 
                         lstOutput.Items.Add($"Copying chats.json to {path}...");
-                        CopyFiles.CopyChats(templateChatsPath, gameChatsPath);
+                        await Task.Run(() => CopyFiles.CopyChats(templateChatsPath, gameChatsPath));
 
                         lstOutput.Items.Add("--------------------------------------------");
                     }
@@ -100,7 +101,7 @@ namespace MnM_UI
             }
         }
 
-        private void ButtonMerge_Click(object sender, RoutedEventArgs e)
+        private async void ButtonMerge_Click(object sender, RoutedEventArgs e)
         {
             if (Validation.ValidateJournalChange(txtJournalPath.Text))
             {
@@ -137,7 +138,7 @@ namespace MnM_UI
                             lstOutput.Items.Add($"Merging {journalFile}...");
                             listboxUpdated = true;
 
-                            MergeJournals.CopyJournal(sourceJournal, destJournal);
+                            await Task.Run(() => MergeJournals.CopyJournal(sourceJournal, destJournal));
                         }
                     }
 
@@ -155,7 +156,7 @@ namespace MnM_UI
                                 lstOutput.Items.Add($"Merging {journalFile}...");
                             }
 
-                            MergeJournals.CopyJournal(destJournal, sourceJournal);
+                            await Task.Run(() => MergeJournals.CopyJournal(destJournal, sourceJournal));
                         }
                     }
                 }
