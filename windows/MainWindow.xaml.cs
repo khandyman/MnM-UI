@@ -96,6 +96,7 @@ namespace MnM_UI
                         await Task.Run(() => CopyFiles.CopyChats(templateChatsPath, gameChatsPath));
 
                         lstOutput.Items.Add("--------------------------------------------");
+                        lstOutput.ScrollIntoView(lstOutput.Items[lstOutput.Items.Count - 1]);
                     }
                 }
             }
@@ -139,6 +140,7 @@ namespace MnM_UI
                             listboxUpdated = true;
 
                             await Task.Run(() => MergeJournals.CopyJournal(sourceJournal, destJournal));
+                            lstOutput.ScrollIntoView(lstOutput.Items[lstOutput.Items.Count - 1]);
                         }
                     }
 
@@ -157,6 +159,7 @@ namespace MnM_UI
                             }
 
                             await Task.Run(() => MergeJournals.CopyJournal(destJournal, sourceJournal));
+                            lstOutput.ScrollIntoView(lstOutput.Items[lstOutput.Items.Count - 1]);
                         }
                     }
                 }
